@@ -1,0 +1,11 @@
+{
+  "defaultEnv": "local",
+  "local": {
+    "driver": "pg",
+    "user": "postgres",
+    "password": "line",
+    "host": "localhost",
+    "database": "todos",
+    "schema": "public"
+  }
+}

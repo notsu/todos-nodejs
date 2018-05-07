@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LINE Todos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <style>
+      body {
+        background-color: #E2E2E2;
+        margin: 0;
+        font-family: 'Prompt', Arial, sans-serif;
+      }
+      #container {
+        background-color: #FFF;
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        padding: 20px;
+      }
+      h1 {
+        margin: 0 0 20px 0;
+        color: #00B902;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #E2E2E2;
+      }
+      .tasks {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .task {
+        position: relative;
+        padding-left: 40px;
+        padding-bottom: 20px;
+      }
+      .task strong {
+        font-weight: bold;
+        color: red;
+      }
+      .task .name {
+        font-size: 22px;
+        color: #333;
+      }
+      .task .due {
+        font-size: 14px;
+        color: #AAA;
+      }
+      .task .priority {
+        color: red;
+        text-decoration: none;
+        font-size: 14px;
+        display: inline-block;
+      }
+      .task .status {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 24px;
+        color: #00B902;
+      }
+      .empty {
+        text-align: center;
+        padding: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1><%= user.displayName %>'s Tasks</h1>
+      <% if (myTasks && myTasks.length > 0) { %>
+        <ul class="tasks">
+          <% myTasks.forEach(({ id, priority, status, task, dateDisplay }) => { %>
+          <li>
+            <div class="task">
+              <div class="name">
+                <%= task %>
+                <% if (priority > 0) { %>
+                  <strong>IMPORTANT 🔥</strong>
+                <% } %>
+              </div>
+              <div class="due"><%= dateDisplay %></div>
+              <% if (priority > 0) { %>
+                <a class="priority" href="/tasks/<%= id %>/unimportant">Mark as unimportant</a>
+              <% } else { %>
+                <a class="priority" href="/tasks/<%= id %>/important">Mark as important</a>
+              <% } %>
+              <% if (status == 1) { %>
+                <a class="status" href="/tasks/<%= id %>/undone"><i class="fa fa-check-circle"></i></a>
+              <% } else { %>
+                <a class="status" href="/tasks/<%= id %>/done"><i class="far fa-circle"></i></a>
+              <% } %>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <div class="empty">
+          You need to create task first.
+        </div>
+      <% } %>
+    </div>
+  </body>
+</html>

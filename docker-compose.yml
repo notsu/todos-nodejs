@@ -1,0 +1,49 @@
+version: '3.1'
+
+services:
+
+  todos-nodejs:
+    image: node:8.11.1-alpine
+    networks:
+      - backend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/src/app
+    environment:
+      - TZ=Asia/Bangkok
+    depends_on:
+      - postgres
+    working_dir: /src/app
+    command: yarn dev
+
+  postgres:
+    image: postgres:10.3-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    ports:
+      # for migration purpose (ONLY IN LOCAL MACHINE)
+      - 5432:5432
+    environment:
+      - TZ=Asia/Bangkok
+      - POSTGRES_PASSWORD=line
+
+  postgres-admin:
+    image: sosedoff/pgweb
+    networks:
+      - backend
+    ports:
+      - 8081:8081
+    environment:
+      - POSTGRES_PASSWORD=line
+      - TZ=Asia/Bangkok
+    depends_on:
+      - postgres
+
+networks:
+  backend:
+
+volumes:
+  postgres-data:
