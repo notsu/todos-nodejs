@@ -1,7 +1,7 @@
 import { INTEGER, STRING, DATE, DATEONLY, BOOLEAN } from 'sequelize'
 import { connect } from 'todos/connectors/postgres'
 
-const database = 'todos'
+const database = process.env.POSTGRES_DATABASE
 const table = 'tasks'
 
 const schema = {
