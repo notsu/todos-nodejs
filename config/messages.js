@@ -10,9 +10,9 @@ export const splitter = ' : '
  */
 export const predefineMessages = {
   edit: 'edit',
-  'แก้ไข': 'edit',
+  แก้ไข: 'edit',
   help: 'help',
-  'ช่วยเหลือ': 'help'
+  ช่วยเหลือ: 'help',
 }
 
 /**

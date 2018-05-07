@@ -15,13 +15,13 @@ export const standardize = message => _.trim(_.lowerCase(message)).replace(/(\n+
  */
 export const getTaskPattern = (message, splitter) => {
   const messages = message.split(splitter)
-  const isCreate = (messages.length > 1 && !_.isEmpty(messages[1]))
+  const isCreate = messages.length > 1 && !_.isEmpty(messages[1])
 
   return {
     isCreate,
     task: _.trim(messages[0]),
     date: _.trim(messages[1]),
-    time: (_.isEmpty(messages[2]) ? '00:00' : _.trim(messages[2]))
+    time: _.isEmpty(messages[2]) ? '00:00' : _.trim(messages[2]),
   }
 }
 

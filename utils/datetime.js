@@ -19,15 +19,15 @@ export const isAliasDate = (date, aliases) => {
  * @return {Boolean}
  */
 export const isValidDate = date => {
-  let [dateInput, monthInput, yearInput] = String(date).split('/');
+  let [dateInput, monthInput, yearInput] = String(date).split('/')
 
-  const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
   if ((!(yearInput % 4) && yearInput % 100) || !(yearInput % 400)) {
-    daysInMonth[1] = 29;
+    daysInMonth[1] = 29
   }
 
-  return !(/\D/.test(String(dateInput))) && dateInput > 0 && dateInput <= daysInMonth[--monthInput]
+  return !/\D/.test(String(dateInput)) && dateInput > 0 && dateInput <= daysInMonth[--monthInput]
 }
 
 /**
@@ -59,19 +59,18 @@ export const convertToDatetime = (date, time, aliases) => {
     return moment()
       .add(alias.add, alias.unit)
       .set({
-        'hour': parseInt(hour, 10),
-        'minute': parseInt(minute, 10)
+        hour: parseInt(hour, 10),
+        minute: parseInt(minute, 10),
       })
   }
 
-  return moment()
-    .set({
-      'date': parseInt(dateInput, 10),
-      'month': parseInt(monthInput, 10) - 1,
-      'year': parseInt(yearInput, 10) + (parseInt(yearInput, 10).toString().length == 2 ? 2000 : 0),
-      'hour': parseInt(hour, 10),
-      'minute': parseInt(minute, 10),
-    })
+  return moment().set({
+    date: parseInt(dateInput, 10),
+    month: parseInt(monthInput, 10) - 1,
+    year: parseInt(yearInput, 10) + (parseInt(yearInput, 10).toString().length == 2 ? 2000 : 0),
+    hour: parseInt(hour, 10),
+    minute: parseInt(minute, 10),
+  })
 }
 
 export default {

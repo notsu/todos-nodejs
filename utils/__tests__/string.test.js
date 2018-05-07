@@ -61,9 +61,15 @@ test('getTaskPattern will be work as expected', () => {
 test('matchReplyMessage will be return reply message when keyword matched with predefine messages', () => {
   expect(matchReplyMessage('help', predefineMessages, replyMessages)).toEqual(replyMessages['help'])
   expect(matchReplyMessage('HELP', predefineMessages, replyMessages)).toEqual(replyMessages['help'])
-  expect(matchReplyMessage('ช่วยเหลือ', predefineMessages, replyMessages)).toEqual(replyMessages['help'])
-  expect(matchReplyMessage('H E L P', predefineMessages, replyMessages)).toEqual(replyMessages['help'])
-  expect(matchReplyMessage(`H\nE\nL\nP`, predefineMessages, replyMessages)).toEqual(replyMessages['help'])
+  expect(matchReplyMessage('ช่วยเหลือ', predefineMessages, replyMessages)).toEqual(
+    replyMessages['help']
+  )
+  expect(matchReplyMessage('H E L P', predefineMessages, replyMessages)).toEqual(
+    replyMessages['help']
+  )
+  expect(matchReplyMessage(`H\nE\nL\nP`, predefineMessages, replyMessages)).toEqual(
+    replyMessages['help']
+  )
 
   expect(matchReplyMessage(`some-random-string`, predefineMessages, replyMessages)).toBe(false)
 })

@@ -36,11 +36,13 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'ejs')
 app.use(cookieParser())
 app.use(bodyParser())
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-}))
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+)
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(express.static(__dirname + '/public'))

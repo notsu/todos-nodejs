@@ -15,5 +15,5 @@ export default {
     channelID: process.env.LINE_LOGIN_CHANNEL_ID,
     channelSecret: process.env.LINE_LOGIN_CHANNEL_SECRET,
     callback: process.env.LINE_LOGIN_CALLBACK,
-  }
+  },
 }

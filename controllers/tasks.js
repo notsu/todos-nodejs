@@ -15,7 +15,7 @@ export const tasks = async (req, res) => {
     order: [['priority', 'DESC'], ['due_datetime', 'ASC']],
   })
 
-  myTasks = myTasks.map((task) => {
+  myTasks = myTasks.map(task => {
     task.dateDisplay = moment(task.due_datetime).format('LLLL')
     return task
   })

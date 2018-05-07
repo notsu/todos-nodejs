@@ -9,7 +9,7 @@ let connections = {}
  * @param  {String} database Database's name
  * @return {Object}          Connection
  */
-export const create = (database) => {
+export const create = database => {
   let connection = _.get(connections, 'database', false)
 
   if (!connection) {

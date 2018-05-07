@@ -18,7 +18,6 @@ const eventHandler = async event => {
   let text = replyMessages.nomatch
 
   if (eventType === 'message' && messageType === 'text') {
-
     const message = _.get(event, 'message.text', '')
     const standardizedMessage = standardize(message)
 
