@@ -37,7 +37,7 @@
     "helmet": "^5.0.2",
     "minimist": "^1.2.6",
     "moment-timezone": "^0.5.35",
-    "passport": "^0.5.2",
+    "passport": "^0.6.0",
     "passport-line": "^0.0.4",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
